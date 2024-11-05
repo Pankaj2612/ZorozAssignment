@@ -2,8 +2,14 @@ import { InfiniteSlider } from "@/components/InfiniteSlider";
 import React from "react";
 import { Link } from "react-router-dom";
 
+type ProductType = {
+  title: string;
+  price: number;
+  category: string;
+  image: string;
+};
 export function InfiniteSliderHoverSpeed() {
-  const [product, setProduct] = React.useState<any[]>([]);
+  const [product, setProduct] = React.useState<ProductType[]>([]);
 
   React.useEffect(() => {
     const getProduct = async () => {

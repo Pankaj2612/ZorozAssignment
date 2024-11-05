@@ -3,8 +3,16 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { InfiniteSliderHoverSpeed } from "./InfiniteSlide";
 import Card from "./ProductCard";
+
+type ProductType = {
+  title: string;
+  price: number;
+  category: string;
+  image: string;
+};
+
 const HomePage: React.FC = () => {
-  const [product, setproduct] = React.useState<[]>();
+  const [product, setproduct] = React.useState<ProductType[]>();
   React.useEffect(() => {
     const getproduct = async () => {
       const result = await fetch(

@@ -4,8 +4,14 @@ import { SelectCategory, Sort } from "@/components/SelectCategory";
 import React from "react";
 import { Link } from "react-router-dom";
 
+type ProductType = {
+  title: string;
+  price: number;
+  category: string;
+  image: string;
+};
 const ProductListingPage: React.FC = () => {
-  const [product, setProduct] = React.useState([]);
+  const [product, setProduct] = React.useState<ProductType[]>();
   const [selectedCategory, setSelectedCategory] = React.useState<string>("all");
   const [sortOrder, setSortOrder] = React.useState<string>("none");
 
@@ -21,6 +27,8 @@ const ProductListingPage: React.FC = () => {
   }, []);
 
   const filteredProducts = React.useMemo(() => {
+    if (!product) return [];
+
     let filtered = product;
 
     if (selectedCategory !== "all") {
