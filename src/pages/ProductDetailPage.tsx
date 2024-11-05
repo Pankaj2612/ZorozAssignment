@@ -5,11 +5,20 @@ import { toast } from "@/hooks/use-toast";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
+type ProductType = {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  image: string;
+  description: string;
+};
+
 const ProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCartContext();
   // Get the product ID from URL params
-  const [product, setProduct] = useState<any>(null); // Use state to hold the product data
+  const [product, setProduct] = useState<ProductType>(); // Use state to hold the product data
   const [productquantity, setProductquantity] = useState<number>(1);
   useEffect(() => {
     const getProduct = async () => {
@@ -126,8 +135,6 @@ const ProductDetailPage: React.FC = () => {
                   image: product.image,
                   quantity: productquantity,
                 });
-
-
               }}>
               <Link to="/checkout">Buy Now</Link>
             </Button>

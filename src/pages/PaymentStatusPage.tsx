@@ -47,7 +47,7 @@ export default function Component() {
   );
 }
 
-function CircleCheckIcon(props) {
+function CircleCheckIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
